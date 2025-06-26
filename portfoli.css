@@ -892,6 +892,7 @@ header .container {
         background-position: center;
         overflow: hidden;
         padding: 0;
+        height: 450px;
     }
 
     .hero-subtitle {
