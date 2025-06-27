@@ -209,7 +209,7 @@ header .container {
 /* ===== HERO SECTION ===== */
 .hero {
     background: url(/img/favorside\ Background\ Removed.jpg)no-repeat left white;
-    background-size: 45%;
+    background-size: 650px;
     overflow: hidden;
     padding: 0;
     margin-top: 70px;
@@ -220,6 +220,7 @@ header .container {
     padding-top: 150px;
     padding-bottom: 100px;
     background-color: rgba(0, 0, 0, 0.507);
+    position: relative;
 }
 .hero .container {
     display: flex;
@@ -276,16 +277,55 @@ header .container {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     animation: float 6s ease-in-out infinite;
 }
-
+.birds{
+    width: 350px;
+    position: absolute;
+    /* right: 200px;
+    top: 340px; */
+    top: -120px;
+    right: 0;
+    filter: blur(1.3px);
+    animation: fly 10s ease-in-out  alternate;
+    z-index: 10;
+}
+@keyframes fly{
+    /* from{
+        top: 340px;
+        right: 200px;
+      }
+      to {
+        top: 310px;
+        right: 140px;
+      } */
+       from{
+        top: 120px;
+        right: -350px;
+       }
+         to {
+          top: -70px;
+          right: 200px;
+}
+}
+.birds img{
+    width: 10%;
+}
+.clouds{
+    width: 500px;
+    position: absolute;
+    top: -40px;
+    right: 100px;
+    filter: blur(6px);
+    animation: float 15s ease-in-out infinite;
+}
 @keyframes float {
     0% {
-        transform: translateY(0px);
+        transform: translateX(0px);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateX(100px);
     }
     100% {
-        transform: translateY(0px);
+        transform: translateX(0px);
     }
 }
 
@@ -743,13 +783,15 @@ header .container {
         display: flex;
         align-items: center;
     }
+    .clouds{
+        display: none;
+    }
+    .birds{
+        display: none;
+    }
 }
 
-@media screen and (max-width: 768px) {
-    section {
-        /* padding: 80px 0; */
-    }
-    
+@media screen and (max-width: 768px) {    
     .hero {
         background-size: 80%;
         overflow: hidden;
@@ -760,6 +802,13 @@ header .container {
         display: block;
     }
     
+    .clouds{
+        display: none;
+    }
+    .birds{
+        display: none;
+    }
+
     .navbar {
         position: fixed;
         top: 70px;
@@ -899,6 +948,13 @@ header .container {
         font-size: 1.3rem;
     }
     
+    .clouds{
+        display: none;
+    }
+    .birds{
+        display: none;
+    }
+
     .profile-img {
         max-width: 280px;
     }
