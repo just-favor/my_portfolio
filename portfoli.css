@@ -51,10 +51,9 @@ img {
 section {
     padding: 4rem 0;
 }
-
 .btn {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 6px 30px;
     border-radius: 50px;
     font-weight: 500;
     text-align: center;
@@ -67,9 +66,8 @@ section {
 .btn-primary {
     background: rgb(0, 255, 255);
     color: #000000;
-    box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+    /* box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3); */
 }
-
 .btn-primary:hover {
     background: cyan;
     transform: translateY(-3px);
@@ -289,16 +287,8 @@ header .container {
     z-index: 10;
 }
 @keyframes fly{
-    /* from{
-        top: 340px;
-        right: 200px;
-      }
-      to {
-        top: 310px;
-        right: 140px;
-      } */
        from{
-        top: 120px;
+        top: 40px;
         right: -350px;
        }
          to {
