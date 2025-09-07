@@ -585,9 +585,13 @@ header .container {
 
 /* ===== CONTACT SECTION ===== */
 .contact {
-    background-color: #f8f9fa;
+    background-color: #2d3e50;
+    color: white;
+    border-bottom: 1px solid white;
 }
-
+.contact h2{
+    color: white;
+}
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -617,11 +621,6 @@ header .container {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 5px;
-    color: #2d3e50;
-}
-
-.contact-details p {
-    color: #666;
 }
 
 .social-links {
