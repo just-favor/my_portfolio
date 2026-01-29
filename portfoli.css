@@ -796,6 +796,13 @@ header .container {
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
 }
 
+/* Mobile theme toggle */
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
 /* ===== DARK MODE STYLES ===== */
 body.dark-mode {
     background-color: #1a1a1a;
@@ -826,6 +833,20 @@ body.dark-mode .projects {
 
 body.dark-mode .skills {
     background-color: #000000;
+}
+
+body.dark-mode .navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (min-width: 769px) {
+    body.dark-mode .navbar {
+        background-color: transparent;
+    }
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: #2d2d2d;
 }
 
 body.dark-mode .skill-item,
@@ -899,6 +920,10 @@ body.dark-mode .info-value {
 
     .menu-btn {
         display: block;
+    }
+    
+    .theme-toggle {
+        display: none;
     }
     
     .clouds{

@@ -10,34 +10,71 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectItems = document.querySelectorAll('.project-item');
     const contactForm = document.getElementById('contactForm');
     const themeToggle = document.getElementById('themeToggle');
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
     
-    // Theme Toggle Functionality
-    themeToggle.addEventListener('click', function() {
+    // Theme Toggle Function
+    function toggleTheme() {
         document.body.classList.toggle('dark-mode');
-        const icon = this.querySelector('i');
+        const desktopIcon = themeToggle?.querySelector('i');
+        const mobileIcon = mobileThemeToggle?.querySelector('i');
         
         if (document.body.classList.contains('dark-mode')) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
+            if (desktopIcon) {
+                desktopIcon.classList.remove('fa-moon');
+                desktopIcon.classList.add('fa-sun');
+            }
+            if (mobileIcon) {
+                mobileIcon.classList.remove('fa-moon');
+                mobileIcon.classList.add('fa-sun');
+            }
             localStorage.setItem('theme', 'dark');
         } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
+            if (desktopIcon) {
+                desktopIcon.classList.remove('fa-sun');
+                desktopIcon.classList.add('fa-moon');
+            }
+            if (mobileIcon) {
+                mobileIcon.classList.remove('fa-sun');
+                mobileIcon.classList.add('fa-moon');
+            }
             localStorage.setItem('theme', 'light');
         }
-    });
+    }
+    
+    // Desktop Theme Toggle
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+    
+    // Mobile Theme Toggle - Direct event listener
+    setTimeout(() => {
+        const mobileBtn = document.getElementById('mobileThemeToggle');
+        if (mobileBtn) {
+            mobileBtn.onclick = function(e) {
+                e.preventDefault();
+                toggleTheme();
+            };
+        }
+    }, 100);
     
     // Load saved theme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
-        themeToggle.querySelector('i').classList.remove('fa-moon');
-        themeToggle.querySelector('i').classList.add('fa-sun');
+        if (themeToggle) {
+            themeToggle.querySelector('i').classList.remove('fa-moon');
+            themeToggle.querySelector('i').classList.add('fa-sun');
+        }
+        if (mobileThemeToggle) {
+            mobileThemeToggle.querySelector('i').classList.remove('fa-moon');
+            mobileThemeToggle.querySelector('i').classList.add('fa-sun');
+        }
     }
     
     // Mobile Menu Toggle
     menuBtn.addEventListener('click', function() {
         navbar.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
         // Toggle menu icon between bars and X
         this.querySelector('i').classList.toggle('fa-bars');
         this.querySelector('i').classList.toggle('fa-times');
@@ -47,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function(e) {
         if (!navbar.contains(e.target) && !menuBtn.contains(e.target) && navbar.classList.contains('active')) {
             navbar.classList.remove('active');
+            document.body.classList.remove('menu-open');
             menuBtn.querySelector('i').classList.add('fa-bars');
             menuBtn.querySelector('i').classList.remove('fa-times');
         }
@@ -83,6 +121,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Smooth Scrolling for Navigation Links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
+            // Handle mobile theme toggle
+            if (this.id === 'mobileThemeToggle') {
+                e.preventDefault();
+                toggleTheme();
+                return;
+            }
+            
             // Only prevent default if it's not a dropdown toggle on mobile
             if (!(window.innerWidth <= 768 && this.parentElement.classList.contains('dropdown'))) {
                 e.preventDefault();
@@ -90,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Close mobile menu if open
                 if (navbar.classList.contains('active')) {
                     navbar.classList.remove('active');
+                    document.body.classList.remove('menu-open');
                     menuBtn.querySelector('i').classList.add('fa-bars');
                     menuBtn.querySelector('i').classList.remove('fa-times');
                 }
